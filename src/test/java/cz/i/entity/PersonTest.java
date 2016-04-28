@@ -33,7 +33,7 @@ public class PersonTest {
 
   @Test
   public void should_print_empty_person() {
-    Pattern pattern = Pattern.compile("cz\\.i\\.Person@.*?\\[name=null,surname=<null>\\]");
+    Pattern pattern = Pattern.compile("cz\\.i\\.entity\\.Person@.*?\\[name=null,surname=<null>,hash=-1905561714\\]");
     String personToStringValue = new Person("null", null).toString();
 
     assertTrue(pattern.matcher(personToStringValue).matches());
