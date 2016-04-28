@@ -10,7 +10,7 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Test;
 
-import cz.i.Person;
+import cz.i.entity.Person;
 
 /**
  * @author jan.hadas@i.cz
