@@ -1,4 +1,4 @@
-package cz.i;
+package cz.i.entity;
 
 /**
  * @author jan.hadas@i.cz

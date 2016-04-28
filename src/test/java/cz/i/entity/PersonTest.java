@@ -1,4 +1,4 @@
-package cz.i;
+package cz.i.entity;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.regex.Pattern;
 
 import org.junit.Test;
+
+import cz.i.entity.Person;
 
 /**
  * @author jan.hadas@i.cz
