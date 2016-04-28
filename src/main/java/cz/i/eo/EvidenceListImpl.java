@@ -8,6 +8,7 @@ import cz.i.entity.Person;
 /**
  * @author jan.hadas@i.cz
  */
+@Deprecated
 public class EvidenceListImpl implements Evidence {
   private List<Person> persons = new ArrayList<>();
 

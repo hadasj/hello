@@ -8,44 +8,44 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cz.i.Person;
+import cz.i.entity.Person;
 
 /**
  * @author jan.hadas@i.cz
  */
 public class HelloDb {
-  private static int counter = 1;
+	private static int counter = 1;
 
-  public void initDb() throws ClassNotFoundException, SQLException {
-    Connection connection = getConnection();
+	public void initDb() throws ClassNotFoundException, SQLException {
+		Connection connection = getConnection();
 
-    try {
+		try {
       PreparedStatement statement = connection.prepareStatement(
           "create table person(id int primary key, name varchar(255), surname varchar(255) not null)");
-      statement.executeUpdate();
-      statement.close();
+			statement.executeUpdate();
+			statement.close();
 
-    } finally {
-      connection.close();
-    }
-  }
+		} finally {
+			connection.close();
+		}
+	}
 
-  public void insertPerson(String name, String surname) throws ClassNotFoundException, SQLException {
-    Connection connection = getConnection();
+	public void insertPerson(String name, String surname) throws ClassNotFoundException, SQLException {
+		Connection connection = getConnection();
 
-    try {
+		try {
       PreparedStatement statement = connection.prepareStatement("insert into person(id, name, surname) values (?, ?, ?)");
-      statement.setInt(1, counter++);
-      statement.setString(2, name);
-      statement.setString(3, surname);
-      statement.executeUpdate();
-      statement.close();
-    } finally {
-      connection.close();
-    }
-  }
+			statement.setInt(1, counter++);
+			statement.setString(2, name);
+			statement.setString(3, surname);
+			statement.executeUpdate();
+			statement.close();
+		} finally {
+			connection.close();
+		}
+	}
 
-  public List<Person> searchPerson(String surname) throws ClassNotFoundException, SQLException {
+	public List<Person> searchPerson(String surname) throws ClassNotFoundException, SQLException {
     Connection connection = getConnection();
     List<Person> result = new ArrayList<>();
 
@@ -69,8 +69,9 @@ public class HelloDb {
   }
 
 
-  private Connection getConnection() throws ClassNotFoundException, SQLException {
-    Class.forName(H2Constants.DB_DRIVER);
-    return DriverManager.getConnection(H2Constants.DB_CONNECTION_STRING, H2Constants.DB_USER, H2Constants.DB_PASSWORD);
-  }
+	private Connection getConnection() throws ClassNotFoundException, SQLException {
+		Class.forName(H2Constants.DB_DRIVER);
+    return DriverManager.getConnection(H2Constants.DB_CONNECTION_STRING, H2Constants.DB_USER,
+        H2Constants.DB_PASSWORD);
+	}
 }

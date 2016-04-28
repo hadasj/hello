@@ -10,7 +10,7 @@ import cz.i.entity.Person;
 /**
  * @author jan.hadas@i.cz
  */
-public class EvidenceSetImpl implements Evidence {
+public class EvidenceSetImpl implements Evidence2 {
   private Set<Person> persons = new HashSet<>();
 
   @Override
@@ -28,5 +28,20 @@ public class EvidenceSetImpl implements Evidence {
   @Override
   public boolean isPersonInEvidence(Person person) {
     return persons.contains(person);
+  }
+
+  @Override
+  public Set<Person> filter(String surname) {
+    if (surname == null) {
+      throw new IllegalArgumentException("surname is mandatory");
+    }
+
+    Set<Person> filteredResult = new HashSet<>();
+    for (Person person : persons) {
+      if (person.getSurname().equals(surname)) {
+        filteredResult.add(person);
+      }
+    }
+    return filteredResult;
   }
 }

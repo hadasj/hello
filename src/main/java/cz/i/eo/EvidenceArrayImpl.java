@@ -5,6 +5,7 @@ import cz.i.entity.Person;
 /**
  * @author jan.hadas@i.cz
  */
+@Deprecated
 public class EvidenceArrayImpl implements Evidence {
 
   private static final int MAX_PEOPLE_STORED = 100;
