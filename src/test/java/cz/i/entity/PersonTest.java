@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.regex.Pattern;
 
+import org.joda.time.LocalDate;
 import org.junit.Test;
 
 import cz.i.entity.Person;
@@ -30,11 +31,11 @@ public class PersonTest {
 	@Test
 	public void should_create_new_instance() throws ParseException {
     Person person = new Person("Franta", "Vomáčko");
-    person.setBirthDate(PARSER.parse("15.2.1969"));
+    person.setBirthDate(LocalDate.parse("1969-02-15"));
 
     assertEquals("Franta", person.getName());
     assertEquals("Vomáčko", person.getSurname());
-    assertEquals("15.02.1969",  PARSER.format(person.getBirthDate()));
+    assertEquals("1969-02-15",  person.getBirthDate().toString());
 	}
 
   @Test
@@ -48,9 +49,9 @@ public class PersonTest {
 
   @Test
   public void should_print_person() throws ParseException {
-    Pattern pattern = Pattern.compile("cz\\.i\\.entity\\.Person@.*?\\[name=null,surname=<null>,birthDate=29\\.02\\.1988 12:00:00,hash=-1905561714\\]");
+    Pattern pattern = Pattern.compile("cz\\.i\\.entity\\.Person@.*?\\[name=null,surname=<null>,birthDate=1988-02-29,hash=-1905561714\\]");
     Person person = new Person("null", null);
-    person.setBirthDate(PARSER.parse("29.2.1988"));
+    person.setBirthDate(LocalDate.parse("1988-02-29"));
     String personToStringValue = person.toString();
 
     assertTrue(pattern.matcher(personToStringValue).matches());
@@ -59,9 +60,9 @@ public class PersonTest {
   @Test
   public void should_differ_two_different_persons() throws ParseException {
     Person youngMan = new Person("Franta", "Vomáčko");
-    youngMan.setBirthDate(PARSER.parse("28.4.2010"));
+    youngMan.setBirthDate(LocalDate.parse("2010-04-28"));
     Person oldMan = new Person("Franta", "Vomáčko");
-    oldMan.setBirthDate(PARSER.parse("15.11.1896"));
+    oldMan.setBirthDate(LocalDate.parse("1896-11-15"));
 
     assertNotEquals(youngMan, oldMan);
   }
@@ -69,9 +70,9 @@ public class PersonTest {
   @Test
   public void equals_should_return_true() throws ParseException {
     Person man = new Person("Franta", "Vomáčko");
-    man.setBirthDate(PARSER.parse("1.6.1993"));
+    man.setBirthDate(LocalDate.parse("1993-06-01"));
     Person sameMan = new Person("Franta", "Vomáčko");
-    sameMan.setBirthDate(PARSER.parse("1.6.1993"));
+    sameMan.setBirthDate(LocalDate.parse("1993-06-01"));
 
     assertEquals(man, sameMan);
   }
