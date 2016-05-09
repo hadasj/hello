@@ -1,10 +1,10 @@
 package cz.i.entity;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.joda.time.LocalDate;
 
 /**
  * @author jan.hadas@i.cz
@@ -13,7 +13,7 @@ public class Person {
 
   private String name;
   private String surname;
-  private Date birthDate;
+  private LocalDate birthDate;
 
   public Person(){}
 
@@ -38,11 +38,11 @@ public class Person {
     this.surname = surname;
   }
 
-  public Date getBirthDate() {
+  public LocalDate getBirthDate() {
     return birthDate;
   }
 
-  public void setBirthDate(Date birthDate) {
+  public void setBirthDate(LocalDate birthDate) {
     this.birthDate = birthDate;
   }
 
@@ -56,8 +56,7 @@ public class Person {
   }
 
   public String getBirthDateFormatted() {
-    SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-    return birthDate == null ? null : format.format(birthDate);
+    return birthDate == null ? null : birthDate.toString();
   }
 
   @Override
